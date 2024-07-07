@@ -1,0 +1,70 @@
+table:
+  name: seller
+  schema: public
+object_relationships:
+  - name: seller_company
+    using:
+      foreign_key_constraint_on: company
+array_relationships:
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: owner
+        table:
+          name: product
+          schema: public
+  - name: seller_companies
+    using:
+      foreign_key_constraint_on:
+        column: owner
+        table:
+          name: seller_company
+          schema: public
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - have_company
+        - status
+        - company
+        - id
+        - address
+        - email
+        - first_name
+        - last_name
+        - password
+        - v_code_for_for
+        - v_code_for_reg
+        - expire_time
+      filter: {}
+  - role: buyer
+    permission:
+      columns:
+        - have_company
+        - status
+        - company
+        - id
+        - address
+        - email
+        - first_name
+        - last_name
+        - password
+        - v_code_for_for
+        - v_code_for_reg
+        - expire_time
+      filter: {}
+  - role: seller
+    permission:
+      columns:
+        - address
+        - email
+        - expire_time
+        - first_name
+        - have_company
+        - id
+        - last_name
+        - password
+        - status
+        - v_code_for_for
+        - v_code_for_reg
+      filter: {}

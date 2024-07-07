@@ -1,0 +1,57 @@
+table:
+  name: p_options
+  schema: public
+object_relationships:
+  - name: product
+    using:
+      foreign_key_constraint_on: p_id
+array_relationships:
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: option_id
+        table:
+          name: product
+          schema: public
+insert_permissions:
+  - role: seller
+    permission:
+      check: {}
+      columns:
+        - id
+        - name
+        - difference
+        - p_id
+        - price
+        - image_url
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+        - difference
+        - p_id
+        - price
+        - image_url
+      filter: {}
+  - role: buyer
+    permission:
+      columns:
+        - id
+        - p_id
+        - price
+        - difference
+        - image_url
+        - name
+      filter: {}
+  - role: seller
+    permission:
+      columns:
+        - id
+        - p_id
+        - price
+        - difference
+        - image_url
+        - name
+      filter: {}

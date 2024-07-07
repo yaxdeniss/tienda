@@ -1,0 +1,44 @@
+table:
+  name: category
+  schema: public
+array_relationships:
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: category_id
+        table:
+          name: product
+          schema: public
+  - name: sub_category_ids
+    using:
+      foreign_key_constraint_on:
+        column: c_id
+        table:
+          name: sub_category
+          schema: public
+insert_permissions:
+  - role: seller
+    permission:
+      check: {}
+      columns:
+        - id
+        - name
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+      filter: {}
+  - role: buyer
+    permission:
+      columns:
+        - id
+        - name
+      filter: {}
+  - role: seller
+    permission:
+      columns:
+        - id
+        - name
+      filter: {}

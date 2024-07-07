@@ -1,0 +1,28 @@
+table:
+  name: buyer
+  schema: public
+array_relationships:
+  - name: orders
+    using:
+      foreign_key_constraint_on:
+        column: buyer_id
+        table:
+          name: order
+          schema: public
+select_permissions:
+  - role: buyer
+    permission:
+      columns:
+        - status
+        - id
+        - address
+        - email
+        - first_name
+        - last_name
+        - password
+        - v_code_for_forg
+        - v_code_for_reg
+        - expire_time
+      filter:
+        id:
+          _eq: X-Hasura-User-Id

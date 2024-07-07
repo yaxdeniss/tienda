@@ -1,0 +1,44 @@
+table:
+  name: sub_category
+  schema: public
+object_relationships:
+  - name: category
+    using:
+      foreign_key_constraint_on: c_id
+insert_permissions:
+  - role: seller
+    permission:
+      check: {}
+      columns:
+        - c_id
+        - id
+        - name
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - c_id
+        - id
+        - name
+      filter: {}
+  - role: buyer
+    permission:
+      columns:
+        - c_id
+        - id
+        - name
+      filter: {}
+  - role: seller
+    permission:
+      columns:
+        - c_id
+        - id
+        - name
+      filter: {}
+  - role: superadmin
+    permission:
+      columns:
+        - c_id
+        - id
+        - name
+      filter: {}

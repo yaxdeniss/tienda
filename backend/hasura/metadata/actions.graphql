@@ -1,0 +1,105 @@
+type Mutation {
+  fileupload(
+    name: String!
+    type: String!
+    base64str: String!
+  ): fileoutput
+}
+
+type Mutation {
+  insert_orders(
+    order_inputs: order_inputs!
+  ): order_output
+}
+
+type Mutation {
+  loginbuyer(
+    inputs: inputs!
+  ): outputs
+}
+
+type Mutation {
+  logindeliveragent(
+    inputs: inputs!
+  ): outputs
+}
+
+type Mutation {
+  loginseller(
+    inputs: inputs!
+  ): outputs
+}
+
+type Mutation {
+  loginsuper(
+    inputs: inputs!
+  ): outputs
+}
+
+type Mutation {
+  signupbuyer(
+    inputs: input_reg!
+  ): output_reg
+}
+
+type Mutation {
+  signupdeliveragent(
+    inputs: input_reg!
+  ): output_reg
+}
+
+type Mutation {
+  signupseller(
+    inputs: input_reg!
+  ): output_reg
+}
+
+type Mutation {
+  signupsuperadmin(
+    input: input_reg!
+  ): output_reg
+}
+
+input SampleInput {
+  username: String!
+  password: String!
+}
+
+input inputs {
+  email: String!
+  password: String!
+}
+
+input input_reg {
+  fname: String!
+  lname: String!
+  email: String!
+  username: String!
+  password: String!
+  address: String!
+}
+
+input order_inputs {
+  id: Int!
+}
+
+type SampleOutput {
+  success: String!
+}
+
+type outputs {
+  accestoken: String!
+}
+
+type output_reg {
+  success: String!
+}
+
+type fileoutput {
+  file_path: String!
+}
+
+type order_output {
+  payment_url: String!
+}
+
